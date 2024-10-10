@@ -1,0 +1,21 @@
+{
+	"info": {
+		"_postman_id": "262ed891-8802-4d76-b0a7-c4f3720e32c8",
+		"name": "Mulesoft API",
+		"description": "The collection is a compilation of APIs for integrating employee information, tax details, salary, and insurance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27870906",
+		"_collection_link": "https://lively-capsule-42964.postman.co/workspace/2813d8f2-385a-46a6-b5c2-f9fcaa5624ab/collection/27870906-262ed891-8802-4d76-b0a7-c4f3720e32c8?action=share&source=collection_link&creator=27870906"
+	},
+	"item": [
+		{
+			"name": "api/v2/employee-tax/{employeeId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "This endpoint will retrieve all information of the employee, such as employee details, tax, insurance, and salary."
+			},
+			"response": []
+		}
+	]
+}
