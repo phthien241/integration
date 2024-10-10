@@ -1,0 +1,9 @@
+{
+     "driverLicenseId": "123456",
+    "name": "John Wick",
+    "taxFileNumber": "TFN987654321",
+    "taxRecordId": "TR123456",
+    "grossIncome": 75000,
+    "totalTaxPaid": 15000,
+    "remainingTaxDue": 5000
+}

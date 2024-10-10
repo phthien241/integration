@@ -1,0 +1,202 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 67108864 bytes for Failed to commit area from 0x0000000080000000 to 0x0000000084000000 of length 67108864.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3386), pid=30980, tid=23940
+#
+# JRE version:  (11.0.19+7) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.19+7, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xms64m -Xmx2G -XX:+HeapDumpOnOutOfMemoryError -DdwtestDir=c:\AnypointStudio\studio-workspace\integration\src\test\resources\dw -DdwtestResources=c:\AnypointStudio\studio-workspace\integration\src\test\resources org.mule.weave.v2.agent.server.AgentServerLauncher -p 51306
+
+Host: 12th Gen Intel(R) Core(TM) i5-12450H, 12 cores, 7G,  Windows 11 , 64 bit Build 22621 (10.0.22621.3958)
+Time: Thu Sep 26 21:20:49 2024 AUS Eastern Standard Time elapsed time: 0.063891 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001a8e3ce7800):  JavaThread "Unknown thread" [_thread_in_vm, id=23940, stack(0x0000007bcdd00000,0x0000007bcde00000)]
+
+Stack: [0x0000007bcdd00000,0x0000007bcde00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x64fb5a]
+V  [jvm.dll+0x7e3549]
+V  [jvm.dll+0x7e4c49]
+V  [jvm.dll+0x7e5333]
+V  [jvm.dll+0x26afd5]
+V  [jvm.dll+0x64cd79]
+V  [jvm.dll+0x6412d5]
+V  [jvm.dll+0x3270bc]
+V  [jvm.dll+0x326f42]
+V  [jvm.dll+0x32bb36]
+V  [jvm.dll+0x373d82]
+V  [jvm.dll+0x3737d0]
+V  [jvm.dll+0x3027a8]
+V  [jvm.dll+0x3038a5]
+V  [jvm.dll+0x7bc6f7]
+V  [jvm.dll+0x7bdebf]
+V  [jvm.dll+0x381169]
+V  [jvm.dll+0x79ea5f]
+V  [jvm.dll+0x3f2697]
+V  [jvm.dll+0x3f4b81]
+C  [jli.dll+0x52eb]
+C  [ucrtbase.dll+0x29333]
+C  [KERNEL32.DLL+0x1257d]
+C  [ntdll.dll+0x5af28]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000001a8e1a01ae0, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000001a8e3d04000 GCTaskThread "GC Thread#0" [stack: 0x0000007bcde00000,0x0000007bcdf00000] [id=2792]
+  0x000001a8e3d36000 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000007bcdf00000,0x0000007bce000000] [id=26988]
+  0x000001a8e3d37000 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000007bce000000,0x0000007bce100000] [id=32404]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffb63353247]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001a8e3ce4750] Heap_lock - owner thread: 0x000001a8e3ce7800
+
+Heap address: 0x0000000080000000, size: 2048 MB, Compressed Oops mode: Non-zero based: 0x0000000080000000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.033 Loaded shared library c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff7b30e0000 - 0x00007ff7b30ee000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\java.exe
+0x00007ffc36f10000 - 0x00007ffc37127000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffc35730000 - 0x00007ffc357f4000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffc34560000 - 0x00007ffc3490d000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffc34940000 - 0x00007ffc34a51000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffc16f10000 - 0x00007ffc16f28000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\jli.dll
+0x00007ffc16ef0000 - 0x00007ffc16f09000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\VCRUNTIME140.dll
+0x00007ffc352a0000 - 0x00007ffc3544e000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffc34910000 - 0x00007ffc34936000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffc36470000 - 0x00007ffc36499000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffc34a60000 - 0x00007ffc34b79000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffc34490000 - 0x00007ffc3452a000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffc2ae50000 - 0x00007ffc2b0e3000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3672_none_2713b9d173822955\COMCTL32.dll
+0x00007ffc35940000 - 0x00007ffc359e7000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffc36780000 - 0x00007ffc367b1000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffbfa3e0000 - 0x00007ffbfa3ec000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\vcruntime140_1.dll
+0x00007ffbe6790000 - 0x00007ffbe6821000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\msvcp140.dll
+0x00007ffb63040000 - 0x00007ffb63bfc000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\server\jvm.dll
+0x00007ffc36b50000 - 0x00007ffc36c02000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffc34d10000 - 0x00007ffc34db9000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffc34530000 - 0x00007ffc34558000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ffc35a70000 - 0x00007ffc35b84000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffc34d00000 - 0x00007ffc34d08000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffc2df20000 - 0x00007ffc2df54000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffc13b20000 - 0x00007ffc13b29000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffc2b100000 - 0x00007ffc2b10a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffc355b0000 - 0x00007ffc35621000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffc323c0000 - 0x00007ffc323d8000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffbfa100000 - 0x00007ffbfa110000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\verify.dll
+0x00007ffc33b40000 - 0x00007ffc33d72000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffc367c0000 - 0x00007ffc36b4e000 	C:\WINDOWS\System32\combase.dll
+0x00007ffc35800000 - 0x00007ffc358d7000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffc27e30000 - 0x00007ffc27e62000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffc34410000 - 0x00007ffc3448b000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffbebc50000 - 0x00007ffbebc78000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\java.dll
+0x00007ffbf8960000 - 0x00007ffbf896a000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\jimage.dll
+0x00007ffbe6770000 - 0x00007ffbe6788000 	c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3672_none_2713b9d173822955;c:\Users\PC\.vscode\extensions\salesforce.mule-dx-dependencies-1.2.0-win32-x64\build\deps\jdk-11.0.19+7\bin\server
+
+VM Arguments:
+jvm_args: -Xms64m -Xmx2G -XX:+HeapDumpOnOutOfMemoryError -DdwtestDir=c:\AnypointStudio\studio-workspace\integration\src\test\resources\dw -DdwtestResources=c:\AnypointStudio\studio-workspace\integration\src\test\resources 
+java_command: org.mule.weave.v2.agent.server.AgentServerLauncher -p 51306
+java_class_path (initial): C:\Users\PC\.m2\repository\org\mule\connectors\mule-http-connector\1.9.3\mule-http-connector-1.9.3-mule-plugin.jar;C:\Users\PC\.m2\repository\org\mule\connectors\mule-sockets-connector\1.2.4\mule-sockets-connector-1.2.4-mule-plugin.jar;C:\Users\PC\.m2\repository\org\mule\modules\mule-validation-module\2.0.6\mule-validation-module-2.0.6-mule-plugin.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\aalto-xml-1.3.2.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\avro-1.11.3.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\avro-module-2.7.0.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\cache-service-2.7.0.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\caffeine-2.9.3.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\caffeine-cache-service-2.7.0.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\checker-qual-3.19.0.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\commons-codec-1.16.0.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\commons-collections-3.2.2.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\commons-collections4-4.4.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-service-weave-ee-2.7.0\lib\commons-compress-1.26.0.jar;C:\Users\PC\AnypointCodeBuilder\runtime\mule-enterprise-standalone-4.7.0\services\mule-servic
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+     bool HeapDumpOnOutOfMemoryError               = true                                   {manageable} {command line}
+   size_t InitialHeapSize                          = 67108864                                  {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2147483648                                {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5836300                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122910970                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122910970                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-20\
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\MongoDB\mongosh-1.10.1-win32-x64\bin;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files\Amazon\AWSCLIV2\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\PC\Documents\Maven\apache-maven-3.9.6\bin;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Users\PC\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\PC\AppData\Local\Programs\Python\Python39\;C:\Users\PC\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.8.101-hotspot\bin;C:\Users\PC\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\PC\AppData\Local\Programs\Python\Python311\;C:\Users\PC\AppData\Local\Microsoft\WindowsApps;C:\Users\PC\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64\mingw64\bin;C:\Users\PC\.dotnet\tools;C:\Users\PC\AppData\Local\Programs\Hyper\resources\bin;C:\Users\PC\Downloads\mongosh-1.10.6-win32-x64\mongosh-1.10.6-win32-x64\bin;C:\Program Files\heroku\bin;C:\Program Files\MySQL\MySQL Server 8.1\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\PC\AppData\Roaming\npm;
+USERNAME=PC
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 154 Stepping 3, GenuineIntel
+TMP=C:\Users\PC\AppData\Local\Temp
+TEMP=C:\Users\PC\AppData\Local\Temp
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 11 , 64 bit Build 22621 (10.0.22621.3958)
+OS uptime: 1 days 21:46 hours
+Hyper-V role detected
+
+CPU:total 12 (initial active 12) (6 cores per cpu, 2 threads per core) family 6 model 154 stepping 3 microcode 0x429, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, sha, fma
+
+Memory: 4k page, system-wide physical 7812M (13M free)
+TotalPageFile size 31364M (AvailPageFile size 39M)
+current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
+current process commit charge ("private bytes"): 64M, peak: 128M
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.19+7) for windows-amd64 JRE (11.0.19+7), built on Apr 18 2023 23:12:18 by "" with MS VC++ 16.7 (VS2019)
+
+END.

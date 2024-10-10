@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="Object" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+    <types:type name="taxInfo" format="json">
+      <types:shape format="weave" example="examples/taxInfo-2.json"><![CDATA[%dw 2.0
+
+type taxInfo = {|
+  driverLicenseId: String, 
+  name: String, 
+  taxFileNumber: String, 
+  taxRecordId: String, 
+  grossIncome: Number {"typeId": "int"}, 
+  totalTaxPaid: Number {"typeId": "int"}, 
+  remainingTaxDue: Number {"typeId": "int"}
+|} {"example": "{\\\"driverLicenseId\\\":\\\"123456\\\",\\\"name\\\":\\\"John Wick\\\",\\\"taxFileNumber\\\":\\\"TFN987654321\\\",\\\"taxRecordId\\\":\\\"TR123456\\\",\\\"grossIncome\\\":75000,\\\"totalTaxPaid\\\":15000,\\\"remainingTaxDue\\\":5000}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="taxRecord" format="json">
+      <types:shape format="weave" example="examples/taxRecord.json"><![CDATA[%dw 2.0
+
+type taxRecord = {|
+  taxRecordId: String, 
+  grossIncome: Number {"typeId": "int"}, 
+  totalTaxPaid: Number {"typeId": "int"}, 
+  remainingTaxDue: Number {"typeId": "int"}
+|} {"example": "{\\\"taxRecordId\\\":\\\"TR123456\\\",\\\"grossIncome\\\":75000,\\\"totalTaxPaid\\\":15000,\\\"remainingTaxDue\\\":5000}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="employeeInfo" format="json">
+      <types:shape format="weave" example="examples/employeeInfo-1.json"><![CDATA[%dw 2.0
+
+type employeeInfo = {|
+  driverLicenseId: String, 
+  email: String
+|} {"example": "{\\\"driverLicenseId\\\":\\\"123456\\\",\\\"email\\\":\\\"john.wick@example.com\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="insurance" format="json">
+      <types:shape format="weave" example="examples/insurance-1.json"><![CDATA[%dw 2.0
+
+type insurance = {|
+  "_id": String, 
+  driverLicenseId: String, 
+  insurancePlan: String, 
+  expiryDate: String
+|} {"example": "{\\\"_id\\\":\\\"66f4c3cdad86920734402693\\\",\\\"driverLicenseId\\\":\\\"123456\\\",\\\"insurancePlan\\\":\\\"Premium Health Plan\\\",\\\"expiryDate\\\":\\\"2025-12-31\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="allTaxInfo" format="json">
+      <types:shape format="weave" example="examples/allTaxInfo.json"><![CDATA[%dw 2.0
+
+type allTaxInfo = {|
+  driverLicenseId: String, 
+  name: String, 
+  taxFileNumber: String, 
+  taxRecordId: String, 
+  grossIncome: Number {"typeId": "int"}, 
+  totalTaxPaid: Number {"typeId": "int"}, 
+  remainingTaxDue: Number {"typeId": "int"}
+|} {"example": "{\\\"driverLicenseId\\\":\\\"123456\\\",\\\"name\\\":\\\"John Wick\\\",\\\"taxFileNumber\\\":\\\"TFN987654321\\\",\\\"taxRecordId\\\":\\\"TR123456\\\",\\\"grossIncome\\\":75000,\\\"totalTaxPaid\\\":15000,\\\"remainingTaxDue\\\":5000}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="String" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#3e7dae37-8573-4694-8f7f-18487595c12d">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="null"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#829cc02c-b432-4e16-b15a-7a8e7080eb9d">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:variables>
+          <types:variable name="taxRecord" type="taxRecord"/>
+          <types:variable name="employeeId" type="Object"/>
+          <types:variable name="driverLicenseId" type="Object"/>
+          <types:variable name="taxInfo" type="taxInfo"/>
+        </types:variables>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="allTaxInfo"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#5c2a639f-0b68-415e-9693-7f5b9c11c888">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="employeeInfo"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#75ed2b1d-f469-4b62-8006-219276336c09">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:attributes type="Object"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#abe4d930-9f0e-4417-9036-3cc6bb054e96">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="taxInfo"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#33a1cda4-3a74-4b56-aac9-f173aefccd88">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:variables>
+          <types:variable name="employeeId" type="String"/>
+        </types:variables>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
