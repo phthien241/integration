@@ -1,0 +1,53 @@
+name: Deploy to CloudHub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Set up Maven
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'maven'
+
+    - name: Cache Maven dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Deploy to CloudHub
+      env:
+        MULE_USERNAME: ${{ secrets.MULE_USERNAME }}
+        MULE_PASSWORD: ${{ secrets.MULE_PASSWORD }}
+        CLIENT_EMAIL_NAME: ${{ secrets.CLIENT_EMAIL_NAME }}
+        PORT: ${{ secrets.PORT }}
+        BLOB_NAME: ${{ secrets.BLOB_NAME }}
+        BASE_URI_EMPLOYEE: ${{ secrets.BASE_URI_EMPLOYEE }}
+        BASE_URI_TAX: ${{ secrets.BASE_URI_TAX }}
+        BASE_URI_INSURANCE: ${{ secrets.BASE_URI_INSURANCE }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        EMAIL_NAME: ${{ secrets.EMAIL_NAME }}
+        BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+      run: |
+        mvn clean install \
+          mule:deploy -Dmule.username=$MULE_USERNAME -Dmule.password=$MULE_PASSWORD \
+          -Dclient.email.name=$CLIENT_EMAIL_NAME -Dport=$PORT -Dblob.name=$BLOB_NAME \
+          -Dbase.uri.employee=$BASE_URI_EMPLOYEE -Dbase.uri.tax=$BASE_URI_TAX \
+          -Dbase.uri.insurance=$BASE_URI_INSURANCE -Demail.password=$EMAIL_PASSWORD \
+          -Demail.name=$EMAIL_NAME -Dbucket.name=$BUCKET_NAME
