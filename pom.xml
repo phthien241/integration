@@ -31,8 +31,8 @@
                 <environment>Sandbox</environment>
                 <target>Cloudhub-US-East-2</target>
                 <muleVersion>4.6.0</muleVersion>
-                <username>${MULE_USERNAME}</username>
-                <password>${MULE_PASSWORD}</password>
+                <clientId>${MULE_CLIENT_ID}</clientId>
+                <clientSecret>${MULE_CLIENT_SECRET}</clientSecret>
                 <applicationName>integration</applicationName>
                 <replicas>1</replicas>
                 <vCores>1</vCores>
