@@ -26,6 +26,13 @@
                 <extensions>true</extensions>
                 <configuration>
                     <classifier>---- select project type ----</classifier>
+                     <cloudHub>
+                        <username>${mule.username}</username>
+                        <password>${mule.password}</password>
+                        <applicationName>integration</applicationName> <!-- Tên ứng dụng trên CloudHub -->
+                        <environment>Sandbox</environment> <!-- Tên môi trường, có thể là "Production", "Sandbox" tùy theo môi trường bạn dùng -->
+                        <region>us-east-2</region> <!-- Region của CloudHub, ví dụ: "us-east-1" -->
+                    </cloudHub>
                 </configuration>
             </plugin>
             <plugin>
