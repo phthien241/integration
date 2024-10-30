@@ -1,0 +1,12 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<settings>
+<pluginGroups>
+    <pluginGroup>org.mule.tools</pluginGroup>
+  <servers>
+    <server>
+        <id>my.anypoint.credentials</id>
+        <username>my.anypoint.username</username>
+        <password>${MULE_CLIENT_ID}~?~${MULE_CLIENT_SECRET}</password>
+    </server>
+  </servers>
+</settings>
