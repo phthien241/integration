@@ -29,6 +29,8 @@ jobs:
 
     - name: Deploy to CloudHub
       env:
+        MULE_CLIENT_ID: ${{ secrets.MULE_CLIENT_ID }}
+        MULE_CLIENT_SECRET: ${{ secrets.MULE_CLIENT_SECRET }}
         MULE_USERNAME: ${{ secrets.MULE_USERNAME }}
         MULE_PASSWORD: ${{ secrets.MULE_PASSWORD }}
         CLIENT_EMAIL_NAME: ${{ secrets.CLIENT_EMAIL_NAME }}
