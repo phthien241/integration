@@ -4,10 +4,8 @@
   <servers>
     <server>
         <id>my.anypoint.credentials</id>
-        <username>my.anypoint.username</username>
-        <connectedAppClientId>${MULE_CLIENT_ID}</connectedAppClientId>
-        <connectedAppClientSecret>${MULE_CLIENT_SECRET}</connectedAppClientSecret>
-        <connectedAppGrantType>client_credentials</connectedAppGrantType>
+        <username>${MULE_CLIENT_ID}</username>
+        <password>${MULE_CLIENT_SECRET}</password>
     </server>
   </servers>
 </settings>
