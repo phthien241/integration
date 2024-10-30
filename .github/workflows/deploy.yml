@@ -41,7 +41,7 @@ jobs:
         EMAIL_NAME: ${{ secrets.EMAIL_NAME }}
         BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
       run: |
-        mvn clean install \
+        mvn clean install -e \
           mule:deploy -Dmule.username=$MULE_USERNAME -Dmule.password=$MULE_PASSWORD \
           -Dclient.email.name=$CLIENT_EMAIL_NAME -Dport=$PORT -Dblob.name=$BLOB_NAME \
           -Dbase.uri.employee=$BASE_URI_EMPLOYEE -Dbase.uri.tax=$BASE_URI_TAX \
