@@ -20,19 +20,33 @@
                 <version>3.2.0</version>
             </plugin>
            <plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-maven-plugin</artifactId>
-                <version>4.2.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <cloudHub>
-                        <username>${MULE_USERNAME}</username>
-                        <password>${MULE_PASSWORD}</password>
-                        <applicationName>integration</applicationName>
-                        <environment>Sandbox</environment>
-                        <region>us-east-2</region>
-                    </cloudHub>
-                </configuration>
+            <groupId>org.mule.tools.maven</groupId>
+            <artifactId>mule-maven-plugin</artifactId>
+            <version>3.7.1</version>
+            <extensions>true</extensions>
+            <configuration>
+                <cloudhub2Deployment>
+                <uri>https://anypoint.mulesoft.com</uri>
+                <provider>MC</provider>
+                <environment>Sandbox</environment>
+                <target>Cloudhub-US-East-2</target>
+                <muleVersion>4.6.0</muleVersion>
+                <username>${MULE_USERNAME}</username>
+                <password>${MULE_PASSWORD}</password>
+                <applicationName>integration</applicationName>
+                <replicas>1</replicas>
+                <vCores>1</vCores>
+                <deploymentSettings>
+                    <http>
+                    <inbound>
+                        <publicUrl>${publicURL}</publicUrl>
+                        <forwardSslSession>true</forwardSslSession>
+                        <lastMileSecurity>true</lastMileSecurity>
+                    </inbound>
+                    </http>
+                </deploymentSettings>
+                </cloudhub2Deployment>
+            </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
