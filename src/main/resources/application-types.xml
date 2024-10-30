@@ -127,13 +127,4 @@ type: string]]></types:shape>
       </types:output-event>
     </types:processor-declaration>
   </types:enrichment>
-  <types:enrichment select="#33a1cda4-3a74-4b56-aac9-f173aefccd88">
-    <types:processor-declaration>
-      <types:input-event>
-        <types:variables>
-          <types:variable name="employeeId" type="String"/>
-        </types:variables>
-      </types:input-event>
-    </types:processor-declaration>
-  </types:enrichment>
 </types:mule>

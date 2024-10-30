@@ -10,10 +10,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class HandleSalaryFile {
-    public static List<Map<String, Object>> handleCsvFile() {
+    public static List<Map<String, Object>> handleCsvFile(String bucketName, String blobName) {
         List<Map<String, Object>> resultList = new ArrayList<>();
-        String bucketName = "tavola-italiano-res";
-        String blobName = "salary.csv";  
 
         Storage storage = StorageOptions.getDefaultInstance().getService();
         Blob blob = storage.get(bucketName, blobName);
