@@ -30,7 +30,7 @@
                 <provider>MC</provider>
                 <environment>Sandbox</environment>
                 <target>Cloudhub-US-East-2</target>
-                <muleVersion>4.6.0</muleVersion>
+                <muleVersion>4.6</muleVersion>
                 <connectedAppClientId>${MULE_CLIENT_ID}</connectedAppClientId>
                 <connectedAppClientSecret>${MULE_CLIENT_SECRET}</connectedAppClientSecret>
                 <applicationName>integration</applicationName>
