@@ -22,16 +22,16 @@
             <plugin>
                 <groupId>org.mule.tools.maven</groupId>
                 <artifactId>mule-maven-plugin</artifactId>
-                <version>${mule.maven.plugin.version}</version>
+                <version>4.2.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <classifier>---- select project type ----</classifier>
                      <cloudHub>
                         <username>${MULE_USERNAME}</username>
                         <password>${MULE_PASSWORD}</password>
-                        <applicationName>integration</applicationName> <!-- Tên ứng dụng trên CloudHub -->
-                        <environment>Sandbox</environment> <!-- Tên môi trường, có thể là "Production", "Sandbox" tùy theo môi trường bạn dùng -->
-                        <region>us-east-2</region> <!-- Region của CloudHub, ví dụ: "us-east-1" -->
+                        <applicationName>integration</applicationName>
+                        <environment>Sandbox</environment> 
+                        <region>us-east-2</region> 
                     </cloudHub>
                 </configuration>
             </plugin>
