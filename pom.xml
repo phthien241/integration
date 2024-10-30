@@ -25,7 +25,6 @@
                 <version>4.2.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <classifier>---- select project type ----</classifier>
                      <cloudHub>
                         <username>${MULE_USERNAME}</username>
                         <password>${MULE_PASSWORD}</password>
