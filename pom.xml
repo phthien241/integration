@@ -19,18 +19,18 @@
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.2.0</version>
             </plugin>
-            <plugin>
+           <plugin>
                 <groupId>org.mule.tools.maven</groupId>
                 <artifactId>mule-maven-plugin</artifactId>
                 <version>4.2.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                     <cloudHub>
+                    <cloudHub>
                         <username>${MULE_USERNAME}</username>
                         <password>${MULE_PASSWORD}</password>
                         <applicationName>integration</applicationName>
-                        <environment>Sandbox</environment> 
-                        <region>Cloudhub-US-East-2</region> 
+                        <environment>Sandbox</environment>
+                        <region>us-east-2</region>
                     </cloudHub>
                 </configuration>
             </plugin>
