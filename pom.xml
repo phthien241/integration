@@ -30,7 +30,7 @@
                         <password>${MULE_PASSWORD}</password>
                         <applicationName>integration</applicationName>
                         <environment>Sandbox</environment> 
-                        <region>us-east-2</region> 
+                        <region>Cloudhub-US-East-2</region> 
                     </cloudHub>
                 </configuration>
             </plugin>
