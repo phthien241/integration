@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/em
 		<http:listener-connection host="0.0.0.0" port="${PORT}" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a1a7aed5-d159-49fb-8f2e-7f45adcd93e6">
-		<http:request-connection port="8080" />
+		<http:request-connection host="${BASE_URI_EMPLOYEE}" port="8080" />
 	</http:request-config>
 	<email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="37969ce4-44f7-4343-8f82-1f694bfd5a93" >
 		<email:smtp-connection host="smtp.gmail.com" port="587" user="${EMAIL_NAME}" password="${EMAIL_PASSWORD}" >
