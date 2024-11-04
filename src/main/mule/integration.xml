@@ -10,8 +10,8 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
-	<global-property doc:name="Global Property" name="env" value="test" />
-	<configuration-properties doc:name="Configuration properties" file="${env}.yaml" />
+	<!-- <global-property doc:name="Global Property" name="env" value="test" />
+	<configuration-properties doc:name="Configuration properties" file="${env}.yaml" /> -->
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d628c76e-6e3f-4c34-a9c5-b1000d9aa23b" >
 		<http:listener-connection host="0.0.0.0" port="${PORT}" />
 	</http:listener-config>
