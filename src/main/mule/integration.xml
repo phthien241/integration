@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/em
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d628c76e-6e3f-4c34-a9c5-b1000d9aa23b" >
 		<http:listener-connection host="0.0.0.0" port="${PORT}" />
 	</http:listener-config>
-	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a1a7aed5-d159-49fb-8f2e-7f45adcd93e6" >
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a1a7aed5-d159-49fb-8f2e-7f45adcd93e6">
 		<http:request-connection port="8080" />
 	</http:request-config>
 	<email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="37969ce4-44f7-4343-8f82-1f694bfd5a93" >
@@ -25,6 +25,9 @@ http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/em
 			</email:properties>
 		</email:smtp-connection>
 	</email:smtp-config>
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="29097315-aff4-4108-823f-9f8acf8c2a56" >
+		<http:request-connection host="54.80.15.151" port="8080" />
+	</http:request-config>
 	<flow name="integrationFlow1" doc:id="4b9f2edb-2c7f-474a-aa9d-9717bc04e8d0" >
 		<http:listener doc:name="Listener" doc:id="0539a048-7042-4da7-85bd-a24f8a3b931b" config-ref="HTTP_Listener_config" path="api/v2/employee-tax/{employeeId}">
 			<http:error-response statusCode="400" />
@@ -80,7 +83,7 @@ payload]]></ee:set-payload>
 	</flow>
 	<sub-flow name="GetEmployeeInfo" doc:id="0b103c37-022d-4032-b88d-bcbc5562c6d2" >
 		<validation:validate-size doc:name="Validate size" doc:id="24f4e595-010b-42cd-b7b9-473dbee04b50" value="#[vars.employeeId]" min="24" max="24" message="The employeeId must be 24 characters long"/>
-		<http:request method="GET" doc:name="Request" doc:id="22e10cb6-98aa-426e-b17b-77d5cdf7b6ee" url="${BASE_URI_EMPLOYEE}/api/v1/employees/{id}">
+		<http:request method="GET" doc:name="Request" doc:id="22e10cb6-98aa-426e-b17b-77d5cdf7b6ee" url="${BASE_URI_EMPLOYEE}/api/v1/employees/{id}" config-ref="HTTP_Request_configuration1">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
 {
