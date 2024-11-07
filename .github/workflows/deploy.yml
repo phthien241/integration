@@ -64,10 +64,14 @@ on:
       - test
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Clear Maven Cache
+        run: mvn dependency:purge-local-repository
+
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
@@ -91,7 +95,7 @@ jobs:
           path: target/
 
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Checkout code
@@ -112,7 +116,7 @@ jobs:
         run: mvn test -e
 
   deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: test
     if: success()
     steps:
