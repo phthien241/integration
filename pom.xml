@@ -137,10 +137,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-		  <groupId>org.mule.modules</groupId>
-		  <artifactId>mule-module-apikit</artifactId>
-		  <version>3.8.1</version>
-		</dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-apikit-module</artifactId>
+            <version>1.11.2</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
         <dependency>
             <groupId>org.mule.weave</groupId>
             <artifactId>assertions</artifactId>
