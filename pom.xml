@@ -10,8 +10,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <app.runtime>4.8.0</app.runtime>
-        <mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
-        <munit.version>3.0.0</munit.version>
+        <mule.maven.plugin.version>4.2.0</mule.maven.plugin.version>
+        <munit.version>3.3.1</munit.version>
     </properties>
     <build>
         <plugins>
@@ -31,7 +31,7 @@
                         <provider>MC</provider>
                         <environment>Sandbox</environment>
                         <target>Cloudhub-US-East-2</target>
-                        <muleVersion>4.0.0</muleVersion>
+                        <muleVersion>4.8</muleVersion>
                         <connectedAppClientId>${MULE_CLIENT_ID}</connectedAppClientId>
                         <connectedAppClientSecret>${MULE_CLIENT_SECRET}</connectedAppClientSecret>
                         <connectedAppGrantType>client_credentials</connectedAppGrantType>
@@ -125,14 +125,14 @@
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-runner</artifactId>
-            <version>3.0.0</version>
+            <version>3.3.1</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-tools</artifactId>
-            <version>3.0.0</version>
+            <version>3.3.1</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
         </dependency>
