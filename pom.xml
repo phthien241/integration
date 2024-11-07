@@ -125,14 +125,14 @@
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-runner</artifactId>
-            <version>3.3.0</version>
+            <version>3.3.1</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-tools</artifactId>
-            <version>3.3.0</version>
+            <version>3.3.1</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
         </dependency>
