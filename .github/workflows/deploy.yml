@@ -73,17 +73,13 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      # - name: Cache Maven dependencies
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.m2/repository
-      #     key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}-v2
-      #     restore-keys: |
-      #       ${{runner.os}}-maven-
-      - name: Install Maven
-        uses: sormuras/actions/maven@v3
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
         with:
-          maven-version: '3.9.6'
+          path: ~/.m2/repository
+          key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
+          restore-keys: |
+            ${{runner.os}}-maven-
       - name: Build the project
         run: mvn clean install -e
       - name: Save build artifact
