@@ -31,7 +31,7 @@
                         <provider>MC</provider>
                         <environment>Sandbox</environment>
                         <target>Cloudhub-US-East-2</target>
-                        <muleVersion>3.9.5</muleVersion>
+                        <muleVersion>4.8</muleVersion>
                         <connectedAppClientId>${MULE_CLIENT_ID}</connectedAppClientId>
                         <connectedAppClientSecret>${MULE_CLIENT_SECRET}</connectedAppClientSecret>
                         <connectedAppGrantType>client_credentials</connectedAppGrantType>
@@ -136,17 +136,13 @@
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
         </dependency>
-        <!-- <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-apikit-module</artifactId>
-            <version>1.11.2</version>
-            <classifier>mule-plugin</classifier>
-        </dependency> -->
         <dependency>
             <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-apikit</artifactId>
-            <version>3.9.5</version>
-        </dependency>
+            <artifactId>mule-apikit-module</artifactId>
+            <version>1.10.4</version>
+            <classifier>mule-plugin</classifier>
+        </dependency> 
+     
         <dependency>
             <groupId>org.mule.weave</groupId>
             <artifactId>assertions</artifactId>
