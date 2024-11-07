@@ -141,8 +141,7 @@
             <artifactId>mule-apikit-module</artifactId>
             <version>1.10.4</version>
             <classifier>mule-plugin</classifier>
-        </dependency> 
-     
+        </dependency>
         <dependency>
             <groupId>org.mule.weave</groupId>
             <artifactId>assertions</artifactId>

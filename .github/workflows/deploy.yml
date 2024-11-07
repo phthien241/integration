@@ -81,8 +81,16 @@ jobs:
           restore-keys: |
             ${{runner.os}}-maven-
       
+      - name: Replace cacerts file in JDK
+        run: |
+          sudo cp cacerts "$JAVA_HOME/lib/security/cacerts"
+
+      - name: Verify cacerts installation
+        run: |
+          keytool -list -keystore "$JAVA_HOME/lib/security/cacerts" -storepass changeit
+
       - name: Build the project
-        run: mvn clean install -U -e 
+        run: mvn clean install -e 
       
       - name: Save build artifact
         uses: actions/upload-artifact@v3
