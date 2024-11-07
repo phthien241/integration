@@ -81,7 +81,7 @@ jobs:
           restore-keys: |
             ${{runner.os}}-maven-
       - name: Build the project
-        run: mvn clean install -e
+        run: mvn clean install -DskipTests -e
       - name: Save build artifact
         uses: actions/upload-artifact@v3
         with:
@@ -104,7 +104,7 @@ jobs:
           distribution: 'temurin'
       
       - name: Run Munit tests
-        run: mvn test -DMunit -e -X
+        run: mvn test -DMunit -e
 
   deploy:
     runs-on: ubuntu-latest
