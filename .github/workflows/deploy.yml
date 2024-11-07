@@ -80,9 +80,6 @@ jobs:
           key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
           restore-keys: |
             ${{runner.os}}-maven-
-
-      - name: Increase Maven Memory
-        run: echo "MAVEN_OPTS='-Xmx1024m -XX:MaxPermSize=512m'" >> $GITHUB_ENV
       
       - name: Build the project
         run: mvn clean install -e -X
