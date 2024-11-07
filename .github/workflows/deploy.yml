@@ -104,7 +104,7 @@ jobs:
           distribution: 'temurin'
       
       - name: Run Munit tests
-        run: mvn test -DMunit -e
+        run: mvn test -DMunit -e -X
 
   deploy:
     runs-on: ubuntu-latest
