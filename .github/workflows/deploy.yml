@@ -80,15 +80,7 @@ jobs:
           key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
           restore-keys: |
             ${{runner.os}}-maven-
-      
-      - name: Replace cacerts file in JDK
-        run: |
-          sudo cp cacerts "$JAVA_HOME/lib/security/cacerts"
-
-      - name: Verify cacerts installation
-        run: |
-          keytool -list -keystore "$JAVA_HOME/lib/security/cacerts" -storepass changeit
-
+    
       - name: Build the project
         run: mvn clean install -e 
       
