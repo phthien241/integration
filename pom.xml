@@ -162,7 +162,7 @@
             <layout>default</layout>
         </repository>
             <repository>
-            <id>mulesoft-releases</id>
+            <id>mulesoft-releases-alt</id>
             <url>https://repository.mulesoft.org/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
