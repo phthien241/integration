@@ -80,8 +80,13 @@ jobs:
           key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
           restore-keys: |
             ${{runner.os}}-maven-
+
+      - name: Increase Maven Memory
+        run: echo "MAVEN_OPTS='-Xmx1024m -XX:MaxPermSize=512m'" >> $GITHUB_ENV
+      
       - name: Build the project
-        run: mvn clean install -DskipTests -e
+        run: mvn clean install -e -X
+      
       - name: Save build artifact
         uses: actions/upload-artifact@v3
         with:
@@ -104,7 +109,7 @@ jobs:
           distribution: 'temurin'
       
       - name: Run Munit tests
-        run: mvn test -DMunit -e
+        run: mvn test -e
 
   deploy:
     runs-on: ubuntu-latest
