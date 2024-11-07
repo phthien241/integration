@@ -107,41 +107,41 @@ jobs:
         run: mvn test -DMunit -e
 
   deploy:
-  runs-on: ubuntu-latest
-  needs: test
-  if: success()
-  steps:
-    - name: Download build artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: app-build
+    runs-on: ubuntu-latest
+    needs: test
+    if: success()
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: app-build
 
-    - name: Set up Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
 
-    - name: Deploy to CloudHub
-      env:
-        MULE_CLIENT_ID: ${{ secrets.MULE_CLIENT_ID }}
-        MULE_CLIENT_SECRET: ${{ secrets.MULE_CLIENT_SECRET }}
-        MULE_USERNAME: ${{ secrets.MULE_USERNAME }}
-        MULE_PASSWORD: ${{ secrets.MULE_PASSWORD }}
-        CLIENT_EMAIL_NAME: ${{ secrets.CLIENT_EMAIL_NAME }}
-        PORT: ${{ secrets.PORT }}
-        BLOB_NAME: ${{ secrets.BLOB_NAME }}
-        BASE_URI_EMPLOYEE: ${{ secrets.BASE_URI_EMPLOYEE }}
-        BASE_URI_TAX: ${{ secrets.BASE_URI_TAX }}
-        BASE_URI_INSURANCE: ${{ secrets.BASE_URI_INSURANCE }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        EMAIL_NAME: ${{ secrets.EMAIL_NAME }}
-        BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-      run: |
-        mvn mule:deploy -Dmule.username=$MULE_USERNAME -Dmule.password=$MULE_PASSWORD \
-          -Dclient.email.name=$CLIENT_EMAIL_NAME -Dport=$PORT -Dblob.name=$BLOB_NAME \
-          -Dbase.uri.employee=$BASE_URI_EMPLOYEE -Dbase.uri.tax=$BASE_URI_TAX \
-          -Dbase.uri.insurance=$BASE_URI_INSURANCE -Demail.password=$EMAIL_PASSWORD \
-          -Demail.name=$EMAIL_NAME -Dbucket.name=$BUCKET_NAME \
-          -f target/<your-app-jar-or-war-file>.jar
+      - name: Deploy to CloudHub
+        env:
+          MULE_CLIENT_ID: ${{ secrets.MULE_CLIENT_ID }}
+          MULE_CLIENT_SECRET: ${{ secrets.MULE_CLIENT_SECRET }}
+          MULE_USERNAME: ${{ secrets.MULE_USERNAME }}
+          MULE_PASSWORD: ${{ secrets.MULE_PASSWORD }}
+          CLIENT_EMAIL_NAME: ${{ secrets.CLIENT_EMAIL_NAME }}
+          PORT: ${{ secrets.PORT }}
+          BLOB_NAME: ${{ secrets.BLOB_NAME }}
+          BASE_URI_EMPLOYEE: ${{ secrets.BASE_URI_EMPLOYEE }}
+          BASE_URI_TAX: ${{ secrets.BASE_URI_TAX }}
+          BASE_URI_INSURANCE: ${{ secrets.BASE_URI_INSURANCE }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_NAME: ${{ secrets.EMAIL_NAME }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+        run: |
+          mvn mule:deploy -Dmule.username=$MULE_USERNAME -Dmule.password=$MULE_PASSWORD \
+            -Dclient.email.name=$CLIENT_EMAIL_NAME -Dport=$PORT -Dblob.name=$BLOB_NAME \
+            -Dbase.uri.employee=$BASE_URI_EMPLOYEE -Dbase.uri.tax=$BASE_URI_TAX \
+            -Dbase.uri.insurance=$BASE_URI_INSURANCE -Demail.password=$EMAIL_PASSWORD \
+            -Demail.name=$EMAIL_NAME -Dbucket.name=$BUCKET_NAME \
+            -f target/<your-app-jar-or-war-file>.jar
 
