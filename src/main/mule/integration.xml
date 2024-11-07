@@ -10,8 +10,8 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
-	<!-- <global-property doc:name="Global Property" name="env" value="qa" />
-	<configuration-properties doc:name="Configuration properties" file="${env}.yaml" /> -->
+	<!-- <global-property doc:name="Global Property" name="env" value="prod" />
+	<configuration-properties doc:name="Configuration properties" file="${env}.yaml" />  -->
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d628c76e-6e3f-4c34-a9c5-b1000d9aa23b" >
 		<http:listener-connection host="0.0.0.0" port="${PORT}" />
 	</http:listener-config>
@@ -33,6 +33,7 @@ http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/em
 			<http:error-response statusCode="400" />
 		</http:listener>
 		<set-variable value="#[attributes.uriParams.employeeId]" doc:name="Set Variable" doc:id="75ed2b1d-f469-4b62-8006-219276336c09" variableName="employeeId" />
+		<logger level="DEBUG" doc:name="Logger" doc:id="8302318d-6fec-4ba1-ac29-01f2f31a3345" message="${BASE_URI_EMPLOYEE}/api/v1/employees"/>
 		<scatter-gather doc:name="Scatter-Gather" doc:id="63f5bcf2-c753-43ad-93e5-da12793cdac2" >
 			<route >
 				<flow-ref doc:name="Get Salary" doc:id="42e056dc-94e0-4226-b1a5-be41a344f16b" name="GetSalary"/>
