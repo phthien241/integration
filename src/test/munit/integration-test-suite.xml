@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="integration-test-suite.xml" />
+	<munit:test name="integration-test-suite-integrationFlow1Test" doc:id="fcf49cfc-5e3a-46c9-8ea2-01579a128c22" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="6c7d4d3b-ad80-491a-9988-fc8a86099eaa" >
+				<munit:payload mediaType="application/json" />
+				<munit:attributes value="#[{ method : 'GET', uriParams: { 'employeeId': '66b7662778db3e4db71f37c7' }}]" />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to integrationFlow1" doc:id="b469d48a-17ab-4b72-97e7-ac505961ce47" name="integrationFlow1"/>
+		</munit:execution>
+		<munit:validation >
+			<logger level="INFO" doc:name="Logger" doc:id="16829122-5a02-4ca2-a03b-c912478f9b16" message="#[payload]"/>
+			<munit-tools:assert-that
+			    expression="#[output application/json ---payload]"
+			    is="#[MunitTools::equalTo(readUrl('classpath://sample_data/output.json', 'application/json'))]"
+			    message="The response payload is incorrect!"
+			    doc:name="Assert That - Payload is Expected" />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
