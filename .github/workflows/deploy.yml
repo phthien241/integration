@@ -64,7 +64,7 @@ on:
       - test
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -91,7 +91,7 @@ jobs:
           path: target/
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     steps:
       - name: Checkout code
@@ -112,7 +112,7 @@ jobs:
         run: mvn test -e
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: test
     if: success()
     steps:
