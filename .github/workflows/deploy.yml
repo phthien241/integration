@@ -74,6 +74,14 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+
+      - name: Install Specific Maven Version 3.9.6
+        run: |
+          curl -L -o apache-maven-3.9.6-bin.zip https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
+          tar -xf apache-maven-3.9.6-bin.zip
+          mv apache-maven-3.9.6 /c/maven
+          echo "::add-path::/c/maven/bin"
+        
       - name: Check Maven version
         run: mvn -version
       - name: Cache Maven dependencies
