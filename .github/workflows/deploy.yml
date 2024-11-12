@@ -74,16 +74,13 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-
-      - name: Install Specific Maven Version 3.9.6
-        run: |
-          curl -L -o apache-maven-3.9.6-bin.zip https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
-          tar -xf apache-maven-3.9.6-bin.zip
-          Move-Item apache-maven-3.9.6 C:\maven
-          echo "C:\maven\bin" >> $env:GITHUB_PATH
         
       - name: Check Maven version
         run: mvn -version
+
+      - name: Print prod.yml contents
+        run: type prod.yml
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
