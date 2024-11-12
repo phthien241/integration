@@ -80,7 +80,7 @@ jobs:
           curl -L -o apache-maven-3.9.6-bin.zip https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
           tar -xf apache-maven-3.9.6-bin.zip
           Move-Item apache-maven-3.9.6 C:\maven
-          echo "::add-path::C:\maven\bin"
+          echo "C:\maven\bin" >> $env:GITHUB_PATH
         
       - name: Check Maven version
         run: mvn -version
