@@ -81,6 +81,18 @@ jobs:
           key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
           restore-keys: |
             ${{runner.os}}-maven-
+      
+      - name: Create prod.yml from GitHub Secrets
+        run: |
+          echo "CLIENT_EMAIL_NAME: ${{ secrets.CLIENT_EMAIL_NAME }}" > src/main/resources/prod.yml
+          echo "PORT: ${{ secrets.PORT }}" >> src/main/resources/prod.yml
+          echo "BLOB_NAME: ${{ secrets.BLOB_NAME }}" >> src/main/resources/prod.yml
+          echo "BASE_URI_EMPLOYEE: ${{ secrets.BASE_URI_EMPLOYEE }}" >> src/main/resources/prod.yml
+          echo "BASE_URI_TAX: ${{ secrets.BASE_URI_TAX }}" >> src/main/resources/prod.yml
+          echo "BASE_URI_INSURANCE: ${{ secrets.BASE_URI_INSURANCE }}" >> src/main/resources/prod.yml
+          echo "EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}" >> src/main/resources/prod.yml
+          echo "EMAIL_NAME: ${{ secrets.EMAIL_NAME }}" >> src/main/resources/prod.yml
+          echo "BUCKET_NAME: ${{ secrets.BUCKET_NAME }}" >> src/main/resources/prod.yml
     
       - name: Build the project
         run: mvn clean install -e
@@ -108,6 +120,17 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+      - name: Create prod.yml from GitHub Secrets
+        run: |
+          echo "CLIENT_EMAIL_NAME: ${{ secrets.CLIENT_EMAIL_NAME }}" > src/main/resources/prod.yml
+          echo "PORT: ${{ secrets.PORT }}" >> src/main/resources/prod.yml
+          echo "BLOB_NAME: ${{ secrets.BLOB_NAME }}" >> src/main/resources/prod.yml
+          echo "BASE_URI_EMPLOYEE: ${{ secrets.BASE_URI_EMPLOYEE }}" >> src/main/resources/prod.yml
+          echo "BASE_URI_TAX: ${{ secrets.BASE_URI_TAX }}" >> src/main/resources/prod.yml
+          echo "BASE_URI_INSURANCE: ${{ secrets.BASE_URI_INSURANCE }}" >> src/main/resources/prod.yml
+          echo "EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}" >> src/main/resources/prod.yml
+          echo "EMAIL_NAME: ${{ secrets.EMAIL_NAME }}" >> src/main/resources/prod.yml
+          echo "BUCKET_NAME: ${{ secrets.BUCKET_NAME }}" >> src/main/resources/prod.yml
       
       - name: Run Munit tests
         run: mvn test -e
