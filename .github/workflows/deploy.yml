@@ -78,8 +78,8 @@ jobs:
       - name: Check Maven version
         run: mvn -version
 
-      - name: Print prod.yml contents
-        run: type prod.yml
+      - name: Print prod1.yml contents
+        run: type prod1.yml
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
