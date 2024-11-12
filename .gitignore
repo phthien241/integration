@@ -47,5 +47,5 @@ target/
 velocity.log
 .tooling-project
 
-# src/main/resources/prod.yaml
+src/main/resources/prod.yaml
 src/main/resources/qa.yaml
