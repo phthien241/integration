@@ -78,8 +78,9 @@ jobs:
       - name: Check Maven version
         run: mvn -version
 
-      - name: Print prod1.yml contents
-        run: type src\main\resources\prod1.yml
+      - name: List all files
+        run: dir /s
+      
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
