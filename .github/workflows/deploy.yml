@@ -79,7 +79,7 @@ jobs:
         run: mvn -version
 
       - name: List all files
-        run: dir /a/integration/integration/src/main/resources
+        run: type src/main/resources/prod1.yml
       
 
       - name: Cache Maven dependencies
