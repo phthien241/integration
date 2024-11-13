@@ -69,13 +69,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
+      # - name: Set up Java
+      #   uses: actions/setup-java@v3
+      #   with:
+      #     java-version: '11'
+      #     distribution: 'temurin'
         
-      - name: Check Maven version
+      # - name: Check Maven version
+      #   run: mvn -version
+
+      - name: Download and Set Up Java 11.0.0.2
+        run: |
+          curl -L -o openjdk-11.0.0.2.zip https://path-to-your-java-11.0.0.2.zip
+          tar -xf openjdk-11.0.0.2.zip
+          mv openjdk-11.0.0.2 C:\java11
+          echo "C:\java11\bin" >> $env:GITHUB_PATH
+
+      - name: Verify Java Version
+        run: java -version
+
+      - name: Download and Set Up Maven 3.9.6
+        run: |
+          curl -L -o apache-maven-3.9.6-bin.zip https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
+          tar -xf apache-maven-3.9.6-bin.zip
+          mv apache-maven-3.9.6 C:\maven
+          echo "C:\maven\bin" >> $env:GITHUB_PATH
+
+      - name: Verify Maven Version
         run: mvn -version
 
       - name: Cache Maven dependencies
