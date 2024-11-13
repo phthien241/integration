@@ -13,13 +13,13 @@ http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/em
 	<global-property doc:name="Global Property" name="env" value="prod1" />
 	<configuration-properties doc:name="Configuration properties" file="${env}.yaml" /> 
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d628c76e-6e3f-4c34-a9c5-b1000d9aa23b" >
-		<http:listener-connection host="0.0.0.0" port="${PORT}" />
+		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a1a7aed5-d159-49fb-8f2e-7f45adcd93e6">
-		<http:request-connection host="${BASE_URI_EMPLOYEE}" port="8080" />
+		<http:request-connection host="http://34.229.209.15:8080" port="8080" />
 	</http:request-config>
 	<email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="37969ce4-44f7-4343-8f82-1f694bfd5a93" >
-		<email:smtp-connection host="smtp.gmail.com" port="587" user="${EMAIL_NAME}" password="${EMAIL_PASSWORD}" >
+		<email:smtp-connection host="smtp.gmail.com" port="587" user="baby.university09@gmail.com" password="majbsqfzgpgzbuaq" >
 			<email:properties >
 				<email:property key="mail.smtp.starttls.enable" value="true" />
 			</email:properties>
@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/em
 			<http:error-response statusCode="400" />
 		</http:listener>
 		<set-variable value="#[attributes.uriParams.employeeId]" doc:name="Set Variable" doc:id="75ed2b1d-f469-4b62-8006-219276336c09" variableName="employeeId" />
-		<logger level="DEBUG" doc:name="Logger" doc:id="8302318d-6fec-4ba1-ac29-01f2f31a3345" message="${BASE_URI_EMPLOYEE}/api/v1/employees"/>
+		<logger level="DEBUG" doc:name="Logger" doc:id="8302318d-6fec-4ba1-ac29-01f2f31a3345" message="http://34.229.209.15:8080/api/v1/employees"/>
 		<scatter-gather doc:name="Scatter-Gather" doc:id="63f5bcf2-c753-43ad-93e5-da12793cdac2" >
 			<route >
 				<flow-ref doc:name="Get Salary" doc:id="42e056dc-94e0-4226-b1a5-be41a344f16b" name="GetSalary"/>
@@ -71,9 +71,9 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<email:send doc:name="Send" doc:id="6fe59900-869c-40b4-bd21-8145c046625b" config-ref="Email_SMTP" fromAddress="${EMAIL_NAME}" subject="This is data you need">
+		<email:send doc:name="Send" doc:id="6fe59900-869c-40b4-bd21-8145c046625b" config-ref="Email_SMTP" fromAddress="baby.university09@gmail.com" subject="This is data you need">
 			<email:to-addresses >
-				<email:to-address value="${CLIENT_EMAIL_NAME}" />
+				<email:to-address value="theo.pham@alphaplussolution.com.au" />
 			</email:to-addresses>
 		</email:send>
 		<error-handler>
@@ -84,7 +84,7 @@ payload]]></ee:set-payload>
 	</flow>
 	<sub-flow name="GetEmployeeInfo" doc:id="0b103c37-022d-4032-b88d-bcbc5562c6d2" >
 		<validation:validate-size doc:name="Validate size" doc:id="24f4e595-010b-42cd-b7b9-473dbee04b50" value="#[vars.employeeId]" min="24" max="24" message="The employeeId must be 24 characters long"/>
-		<http:request method="GET" doc:name="Request" doc:id="22e10cb6-98aa-426e-b17b-77d5cdf7b6ee" url="${BASE_URI_EMPLOYEE}/api/v1/employees/{id}" config-ref="HTTP_Request_configuration1">
+		<http:request method="GET" doc:name="Request" doc:id="22e10cb6-98aa-426e-b17b-77d5cdf7b6ee" url="http://34.229.209.15:8080/api/v1/employees/{id}" config-ref="HTTP_Request_configuration1">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
 {
@@ -115,7 +115,7 @@ payload]]></ee:set-payload>
 	</sub-flow>
 	<sub-flow name="GetTaxInfo" doc:id="3e7dae37-8573-4694-8f7f-18487595c12d" >
 		<validation:validate-size doc:name="Validate size" doc:id="5ff2a8f5-f35f-4533-86f5-b6fe136eef4f" value="#[vars.employeeInfo.driverLicenseId]" min="6" max="6" message="The driverLicenseId must be 6 characters long"/>
-		<http:request method="GET" doc:name="Request" doc:id="abe4d930-9f0e-4417-9036-3cc6bb054e96" url="${BASE_URI_TAX}/api/v1/employees/{driverLicenseId}">
+		<http:request method="GET" doc:name="Request" doc:id="abe4d930-9f0e-4417-9036-3cc6bb054e96" url="http://34.229.209.15:4000/api/v1/employees/{driverLicenseId}">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
 {
@@ -123,7 +123,7 @@ payload]]></ee:set-payload>
 }]]]></http:uri-params>
 		</http:request>
 		<set-variable value="#[payload default{}]" doc:name="Set Variable" doc:id="edb2f3be-e294-453e-bcfb-aa2abe2ea34e" variableName="taxInfo"/>
-		<http:request method="GET" doc:name="Request" doc:id="6501b817-2620-4c86-be11-fbb7f720dc8f" url="${BASE_URI_TAX}/api/v1/tax-records/{taxFileNumber}">
+		<http:request method="GET" doc:name="Request" doc:id="6501b817-2620-4c86-be11-fbb7f720dc8f" url="http://34.229.209.15:4000/api/v1/tax-records/{taxFileNumber}">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
 {
@@ -156,7 +156,7 @@ payload]]></ee:set-payload>
 	</sub-flow>
 	<sub-flow name="GetInsuranceInfo" doc:id="7e26766f-0ad8-459a-8b0b-6a9d1767af79" >
 		<validation:validate-size doc:name="Validate size" doc:id="7b2a6e89-ca37-4aa5-8090-6d6fce211116" value="#[vars.employeeInfo.driverLicenseId]" min="6" max="6" message="The driverLicenseId must be 6 characters long"/>
-		<http:request method="GET" doc:name="Request" doc:id="47212ed0-8ef0-4cbc-a391-1e55a8547036" url="${BASE_URI_INSURANCE}/api/v1/insurance/{driverLicenseId}">
+		<http:request method="GET" doc:name="Request" doc:id="47212ed0-8ef0-4cbc-a391-1e55a8547036" url="http://34.229.209.15:4001/api/v1/insurance/{driverLicenseId}">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
 {
@@ -167,8 +167,8 @@ payload]]></ee:set-payload>
 	<sub-flow name="GetSalary" doc:id="f7310864-c4f9-40f9-b3f3-47de94cff9be" >
 		<java:invoke-static doc:name="Read CSV file" doc:id="96bef321-140e-4c63-94ab-f592f8db6ea4" class="integration.HandleSalaryFile" method="handleCsvFile(java.lang.String,java.lang.String)">
 			<java:args ><![CDATA[#[{
-	bucketName: p('BUCKET_NAME'),
-    blobName: p('BLOB_NAME')
+	bucketName: 'tavola-italiano-res',
+    blobName: 'salary.csv'
 }]]]></java:args>
 		</java:invoke-static>
 		<set-variable value="#[payload]" doc:name="Set Variable" doc:id="447f60cb-6427-41cc-934f-98a2155d70a2" variableName="salaryData"/>
