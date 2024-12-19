@@ -49,3 +49,4 @@ velocity.log
 
 src/main/resources/prod.yaml
 src/main/resources/qa.yaml
+src/main/resources/keystore.jks
